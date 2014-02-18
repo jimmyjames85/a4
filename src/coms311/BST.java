@@ -30,6 +30,18 @@ public class BST
 		}
 	}
 	
+	public int size()
+	{
+		int rsize = 0;
+		int lsize = 0;
+		if(this.left!=null)
+			lsize = left.size();
+		if (this.right!=null)
+			rsize = right.size();
+		
+		return rsize + lsize + 1;
+	}
+	
 	public static BST buildBst(int [] list)
 	{
 		if(list.length<0)
