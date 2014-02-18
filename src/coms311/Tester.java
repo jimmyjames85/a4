@@ -7,7 +7,7 @@ public class Tester
 {
 	public static void main(String[] args)
 	{
-		int size = 234;
+		int size = 10;
 		ArrayList<Integer> sortedList = new ArrayList<Integer>();
 
 		for (int i = 0; i < size; i++)
@@ -24,7 +24,7 @@ public class Tester
 
 		BST bt = BST.buildBst(randList);
 			
-		System.out.println(bt.size());
+		System.out.println(bt);
 		
 
 	}
