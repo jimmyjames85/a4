@@ -8,6 +8,7 @@ public class Tester
 		System.out.println("Hello World AGAIN!!!");
 		System.out.println("NEWLINE");
 		//Git this
+		//configure pull now
 	}
 	
 }
