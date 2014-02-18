@@ -5,26 +5,40 @@ import java.util.Random;
 
 public class Tester
 {
-	public static void main(String[] args)
+	
+	public int[] randList(int n)
 	{
-		int size = 10;
+
 		ArrayList<Integer> sortedList = new ArrayList<Integer>();
 
-		for (int i = 0; i < size; i++)
+		for (int i = 0; i < n; i++)
 			sortedList.add(i);
 
 		Random rand = new Random(System.nanoTime());
-
-		int[] randList = new int[size];
-		for (int i = 0; i < size; i++)
+		int[] randList = new int[n];
+		for (int i = 0; i < n; i++)
 		{
-			int j = rand.nextInt(size - i);
+			int j = rand.nextInt(n - i);
 			randList[i] = sortedList.remove(j);
 		}
+		
+		return randList;
+	}
+	
+	public static void main(String[] args)
+	{
+		int[] list = {0,1,2,3,4,5};
+		
+		ArrayList<Integer> sortedList = new ArrayList<Integer>();
 
-		BST bt = BST.buildBst(randList);
+
+		BST bt = BST.buildBst(list);
+		
+		System.out.println(bt.toString());
+		
+		bt.add(6);
 			
-		System.out.println(bt);
+		//System.out.println(bt);
 		
 
 	}

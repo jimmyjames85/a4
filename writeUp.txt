@@ -1,0 +1,94 @@
+public void add(int toAdd)
+{
+	if (toAdd < data)
+	{
+		if (left == null)
+			left = new BST(toAdd);
+		else
+			left.add(toAdd);
+	}
+	else
+	{
+		if (right == null)
+			right = new BST(toAdd);
+		else
+			right.add(toAdd);
+	}
+}
+
+
+
+This searches the BST for the proper spot to insert the value
+toAdd. If we consider a tree that is not balanced the search is
+going to take BigO(n) time
+
+
+
+
+Consider the unbalanced tree
+
+  1
+    2
+      3
+        4
+          5
+
+
+and suppose we call add(6) on the root (1). We see 
+6 is greater than (1) so we call right.add(toAdd).
+6 is greater than (2) so we call right.add(toAdd).
+6 is greater than (3) so we call right.add(toAdd).
+6 is greater than (4) so we call right.add(toAdd).
+
+6 is greater than (5) but (5) has no child so we create a new
+BST. All in all we've called the function add() 5 times. 5 is the
+number of elements in the tree thus the worst case scenario for
+add() is when the tree is unbalanced and runs in n time.
+
+
+Now consider a well-ballanced binary tree
+
+                       8
+              4                   12
+        2         6         10         14
+      1   3      5  7         11     13  15
+
+and suppose we call add(9) on the root (8). We see
+9 is greater than (8) so we call right.add(toAdd). 
+9 is smaller than (12) so we call left.add(toAdd).
+9 is smaller than (10) but (10) has no left child so we create a
+new BST. All in all we've called the function add() 3 times. 3 is
+is equal to lg(n) in the integer world and thus thus the best
+case scenario is when the tree is well-balanced and runs in
+lg(n)-time.
+
+If we look at add() as a function on the number of elements in
+the tree, f(n), we see add will run in f(n) time where:
+
+       lg(n) ≤ f(n) ≤ n 
+
+Thus add() ∊ BigO(n)  and add() ∊ Omega(lg(n))
+
+Now consider the Build-BST(list) algorithm
+
+public static BST buildBst(int[] list)
+{
+	if(list.length < 0)                      
+	       return null;
+
+	BST root = new BST(list[0]);
+
+	for (int i = 1; i < list.length; i++)
+		root.add(list[i]);
+
+	return root;
+}
+
+We are mainly concerned with the for loop adding n elements from the
+list. Every thing else runs in constant time. Thus the loop calls
+root.add() n times which runs in f(n) time. Thus BuildBST will run in
+n·f(n). But f(n) ∊ BigO(n) and f(n) ∊ Omega(lg(n)) thus n·f(n) ∊
+BigO(n²) and n·f(n) ∊ Omega(n·lg(n)). In other words the best case
+running time of BuildBST is Omega(n·lg(n)) and the worst case running
+time of BuildBST is BigO(n²).
+

@@ -12,8 +12,11 @@ public class BST
 		right = null;
 	}
 
+	static int raddCount=0;
+	
 	public void add(int toAdd)
 	{
+
 		if (toAdd < data)
 		{
 			if (left == null)
@@ -26,12 +29,14 @@ public class BST
 			if (right == null)
 				right = new BST(toAdd);
 			else
+			{
 				right.add(toAdd);
+				System.out.println("rAdd:" + ++raddCount);
+			}
 		}
 	}
 
-	
-	//TODO
+	// TODO
 	private String toString(int tab)
 	{
 
