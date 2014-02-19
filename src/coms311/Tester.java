@@ -6,9 +6,20 @@ import java.util.Random;
 public class Tester
 {
 	
-	public int[] randList(int n)
+	
+	public static int[] randList(int n, int max)
 	{
+		int[] randList = new int[n];
+		Random rand = new Random (System.nanoTime());
 
+		for(int i=0;i<randList.length;i++)
+			randList[i] = rand.nextInt(max);
+		
+		return randList;
+	}
+	
+	public static int[] randList(int n)
+	{
 		ArrayList<Integer> sortedList = new ArrayList<Integer>();
 
 		for (int i = 0; i < n; i++)
@@ -21,24 +32,22 @@ public class Tester
 			int j = rand.nextInt(n - i);
 			randList[i] = sortedList.remove(j);
 		}
-		
+
 		return randList;
 	}
-	
+
 	public static void main(String[] args)
 	{
-		int[] list = {0,1,2,3,4,5};
+		HeapOnSortedLists hosl = new HeapOnSortedLists();
 		
-		ArrayList<Integer> sortedList = new ArrayList<Integer>();
-
-
-		BST bt = BST.buildBst(list);
+				
+		int[] r = randList(9);
+		for(int i=0;i<r.length;i++)
+			hosl.add(new SortedList(randList(9,90)));
+	
 		
-		System.out.println(bt.toString());
-		
-		bt.add(6);
-			
-		//System.out.println(bt);
+		while(!hosl.isEmpty())
+			System.out.print(hosl.remove()+" ");
 		
 
 	}

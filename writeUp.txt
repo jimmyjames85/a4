@@ -1,3 +1,9 @@
+
+First let us consider the best and worst case running times for the
+function add() Since this is a recursive funtion the base case is when
+add attempts to add to the left but left is empty or when add attempts
+to add to the right but right is empty. 
+
 public void add(int toAdd)
 {
 	if (toAdd < data)
@@ -16,16 +22,7 @@ public void add(int toAdd)
 	}
 }
 
-
-
-This searches the BST for the proper spot to insert the value
-toAdd. If we consider a tree that is not balanced the search is
-going to take BigO(n) time
-
-
-
-
-Consider the unbalanced tree
+Let us consider the unbalanced tree
 
   1
     2
@@ -50,7 +47,7 @@ Now consider a well-ballanced binary tree
 
                        8
               4                   12
-        2         6         10         14
+v        2         6         10         14
       1   3      5  7         11     13  15
 
 and suppose we call add(9) on the root (8). We see
@@ -84,6 +81,7 @@ public static BST buildBst(int[] list)
 	return root;
 }
 
+
 We are mainly concerned with the for loop adding n elements from the
 list. Every thing else runs in constant time. Thus the loop calls
 root.add() n times which runs in f(n) time. Thus BuildBST will run in
@@ -91,4 +89,5 @@ n·f(n). But f(n) ∊ BigO(n) and f(n) ∊ Omega(lg(n)) thus n·f(n) ∊
 BigO(n²) and n·f(n) ∊ Omega(n·lg(n)). In other words the best case
 running time of BuildBST is Omega(n·lg(n)) and the worst case running
 time of BuildBST is BigO(n²).
+
 
