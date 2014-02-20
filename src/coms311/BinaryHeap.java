@@ -2,7 +2,6 @@ package coms311;
 
 import java.util.ArrayList;
 
-
 //MIN HEAP
 public class BinaryHeap<E extends Comparable<? super E>>
 {
@@ -20,18 +19,21 @@ public class BinaryHeap<E extends Comparable<? super E>>
 	{
 		theHeap = new ArrayList<E>();
 	};
-	
+
 	public BinaryHeap(E[] list)
 	{
 		theHeap = new ArrayList<E>();
 
-		//copy data to our arrayList
-		for(int i=0;i<list.length;i++)
-			theHeap.add(list[i]);			
+		// copy data to our arrayList
+		for (int i = 0; i < list.length; i++)
+			theHeap.add(list[i]);
 
-		//now we heapify by starting with the last internal node and percolating down
-				
-		
+		// now we heapify by starting with the last internal node and
+		// percolating down and continuing to do do this until we get to the
+		// node
+		int curNode = ((theHeap.size() - 1) - 1) / 2 + 1;
+		while(curNode>=0)
+			percolateDown(curNode--);
 		
 	}
 
@@ -65,18 +67,9 @@ public class BinaryHeap<E extends Comparable<? super E>>
 		theHeap.set(x, theItem);
 	}
 
-	public E remove()
+	private void percolateDown(int x)
 	{
-		if (theHeap.size() == 0)
-			return null;
-		else if (theHeap.size() == 1)
-			return theHeap.remove(0);
-
-		E ret = theHeap.get(0);
-
-		E pdown = theHeap.remove(theHeap.size() - 1);
-
-		int x = 0;
+		E pdown = theHeap.get(x);
 
 		boolean foundIt = false;
 		while (!foundIt)
@@ -113,7 +106,19 @@ public class BinaryHeap<E extends Comparable<? super E>>
 		}
 
 		theHeap.set(x, pdown);
+	}
 
+	public E remove()
+	{
+		if (theHeap.size() == 0)
+			return null;
+		else if (theHeap.size() == 1)
+			return theHeap.remove(0);
+
+		E ret = theHeap.get(0);
+		E pdown = theHeap.remove(theHeap.size() - 1);
+		theHeap.set(0, pdown);
+		percolateDown(0);
 		return ret;
 	}
 

@@ -37,43 +37,23 @@ public class Tester
 
 	public static void main(String[] args)
 	{
-		int size = 15;
-
-		int[] arr = randList(size, 20);
-
-		ArrayList<Integer> increasingLeft = new ArrayList<Integer>();
-		ArrayList<Integer> increasingRight = new ArrayList<Integer>();
-
-		int lHighest = arr[0];
-		increasingLeft.add(lHighest);
-		for (int i = 1; i < arr.length; i++)
-		{
-			if (arr[i] > lHighest)
-			{
-				lHighest = arr[i];
-				increasingLeft.add(lHighest);
-			}
-		}
-
-		int rHighest = 0;
-		rHighest = arr[arr.length - 1];
-		increasingRight.add(rHighest);
-		for (int i = arr.length - 2; i >= 0 && rHighest < lHighest; i--)
-		{
-			if (arr[i] > rHighest)
-			{
-				rHighest = arr[i];
-				increasingRight.add(rHighest);
-			}
-		}
-
-		for (int i = 0; i < arr.length; i++)
-			System.out.print(arr[i] + " ");
+		int size = 9;
 		
+		int[] arr = randList(size);
+		
+		Integer[] iArr = new Integer[size];
+		for(int i=0;i<arr.length;i++)
+			iArr[i] = arr[i];
+
+				
+		BinaryHeap<Integer> bh = new BinaryHeap<Integer>(iArr);
+		System.out.println(bh);
+
+				
+		while(!bh.isEmpty())
+			System.out.print(bh.remove()+ " ");
+			
 		System.out.println();
-		System.out.println(new SortedList(arr));
-		System.out.println();
-		System.out.println(increasingLeft);
-		System.out.println(increasingRight);
+
 	}
 }
