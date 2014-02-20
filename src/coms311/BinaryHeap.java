@@ -2,6 +2,8 @@ package coms311;
 
 import java.util.ArrayList;
 
+
+//MIN HEAP
 public class BinaryHeap<E extends Comparable<? super E>>
 {
 
@@ -18,6 +20,20 @@ public class BinaryHeap<E extends Comparable<? super E>>
 	{
 		theHeap = new ArrayList<E>();
 	};
+	
+	public BinaryHeap(E[] list)
+	{
+		theHeap = new ArrayList<E>();
+
+		//copy data to our arrayList
+		for(int i=0;i<list.length;i++)
+			theHeap.add(list[i]);			
+
+		//now we heapify by starting with the last internal node and percolating down
+				
+		
+		
+	}
 
 	public E peek()
 	{
