@@ -3,18 +3,21 @@ package coms311;
 public class HashTableChained
 {
 
-	private final static int TABLE_SIZE = 9;
-
+	private int tableSize;
 	HashLink[] table;
 
-	public HashTableChained()
+	public HashTableChained(int buckets)
 	{
-		table = new HashLink[TABLE_SIZE];
+		if(buckets>0)
+		this.tableSize = buckets;
+		else 
+			tableSize = 128;
+		table = new HashLink[tableSize];
 	}
 
 	public void put(int key, int value)
 	{
-		int hash = key % TABLE_SIZE;
+		int hash = key % tableSize;
 
 		if (table[hash] == null)
 			table[hash] = new HashLink(key, value);

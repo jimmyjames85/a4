@@ -35,25 +35,20 @@ public class Tester
 		return randList;
 	}
 
+	public static void testHashTableChain()
+	{
+		HashTableChained htc = new HashTableChained(9);
+		int arr[] = {0,39,7,12,42,4,17,13,3};
+		for(int i=0;i<arr.length;i++)
+			htc.put(arr[i],arr[i]);
+		
+		System.out.println(htc.toString());
+	}
+
 	public static void main(String[] args)
 	{
-		int size = 9;
+
+		testHashTableChain();
 		
-		int[] arr = randList(size);
-		
-		Integer[] iArr = new Integer[size];
-		for(int i=0;i<arr.length;i++)
-			iArr[i] = arr[i];
-
-				
-		BinaryHeap<Integer> bh = new BinaryHeap<Integer>(iArr);
-		System.out.println(bh);
-
-				
-		while(!bh.isEmpty())
-			System.out.print(bh.remove()+ " ");
-			
-		System.out.println();
-
 	}
 }

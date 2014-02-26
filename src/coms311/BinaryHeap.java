@@ -31,7 +31,7 @@ public class BinaryHeap<E extends Comparable<? super E>>
 		// now we heapify by starting with the last internal node and
 		// percolating down and continuing to do do this until we get to the
 		// node
-		int curNode = ((theHeap.size() - 1) - 1) / 2 + 1;
+		int curNode = (theHeap.size() - 2) / 2 + 1;
 		while(curNode>=0)
 			percolateDown(curNode--);
 		
